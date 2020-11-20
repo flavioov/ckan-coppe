@@ -7,6 +7,6 @@
 # Editor-based HTTP Client requests
 .idea/httpRequests/
 
-solr/8.7.0/FILES/solr-8.7.0.tgz
+../solr/8.7.0/FILES/solr-8.7.0.tgz
 
-.tgz
+*.tgz
