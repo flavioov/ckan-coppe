@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Sao_Paulo
@@ -18,7 +18,7 @@ RUN apt-get update && apt-get upgrade -y && \
 
 ARG datapusherBranch="stable"
 
-COPY src/capgov/datapusher/stable/FILES/datapusher-entrypoint.sh /usr/local/bin
+COPY ./FILES/datapusher-entrypoint.sh /usr/local/bin
 
 ENV CKAN_HOME="/usr/lib/ckan" \
     DATAPUSHER_HOME="/usr/lib/ckan/default/src/datapusher"

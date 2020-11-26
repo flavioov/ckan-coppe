@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM redis:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Sao_Paulo
@@ -20,9 +20,9 @@ ENV REDIS_LOG=/var/log/redis     \
     REDIS_PID=/var/run/redis     \
     REDIS_DATA=/var/lib/redis
 
-RUN groupadd -r -g 5000 redis && \
-    useradd -Mr -c "Redis User" -g 5000 -u 5000 redis && \
-    apt-get update && apt-get upgrade -y && \
+# groupadd -r -g 5000 redis && \
+#    useradd -Mr -c "Redis User" -g 5000 -u 5000 redis && \
+RUN    apt-get update && apt-get upgrade -y && \
     apt-get install -y redis-server && \
     apt-get clean all && apt-get autoclean && \
     sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf && \
