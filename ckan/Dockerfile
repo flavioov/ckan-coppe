@@ -32,17 +32,17 @@ RUN apt-get -q -y update && apt-get -q -y upgrade \
       vim \
       && apt-get -q clean
 
-#RUN wget https://download.osgeo.org/gdal/2.4.4/gdal-2.4.4.tar.gz \
-#        && tar -xvzf gdal-2.4.4.tar.gz \
-#        && cd gdal-2.4.4 \
-#        && ./configure --prefix=/usr \
-#        && make \
-#        && checkinstall \
-#        && rm -rf gdal-2.4.4 \
-#        && rm gdal-2.4.4.tar.gz
+RUN wget https://download.osgeo.org/gdal/2.4.4/gdal-2.4.4.tar.gz \
+        && tar -xvzf gdal-2.4.4.tar.gz \
+        && cd gdal-2.4.4 \
+        && ./configure --prefix=/usr \
+        && make \
+        && checkinstall \
+        && rm -rf gdal-2.4.4 \
+        && rm gdal-2.4.4.tar.gz
 
-#RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
-#RUN export C_INCLUDE_PATH=/usr/include/gdal
+RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
+RUN export C_INCLUDE_PATH=/usr/include/gdal
 
 #######################
 
