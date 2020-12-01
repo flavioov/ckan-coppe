@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extensions/ckanext-datastore" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extensions/ckanext-geoserver" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extensions/ckanext-storage" vcs="Git" />
   </component>
 </project>

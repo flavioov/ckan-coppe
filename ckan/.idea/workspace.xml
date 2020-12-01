@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02105d00-a7af-4005-8b67-b6d70b6f3b7f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contrib/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contrib/docker/postgresql/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/contrib/docker/postgresql/Dockerfile" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="348409c5-76db-4137-803c-33c28554a5e0" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1kYI0bq4Y6hQkemlxfK1UNUs0dD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/contrib/docker/postgresql" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/contrib/docker/postgresql" />
+      <recent name="$PROJECT_DIR$/contrib/docker" />
+      <recent name="$PROJECT_DIR$/temp" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02105d00-a7af-4005-8b67-b6d70b6f3b7f" name="Default Changelist" comment="" />
+      <created>1605870875373</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605870875373</updated>
+      <workItem from="1605870876657" duration="1102000" />
+      <workItem from="1605883212684" duration="405000" />
+      <workItem from="1605883650129" duration="4683000" />
+      <workItem from="1605893530946" duration="1151000" />
+      <workItem from="1605895335653" duration="1148000" />
+      <workItem from="1606230021427" duration="1627000" />
+      <workItem from="1606235536178" duration="308000" />
+      <workItem from="1606235856843" duration="3250000" />
+      <workItem from="1606308784934" duration="14698000" />
+      <workItem from="1606743862460" duration="3582000" />
+      <workItem from="1606750468182" duration="16000" />
+      <workItem from="1606750500916" duration="4114000" />
+      <workItem from="1606762759276" duration="924000" />
+      <workItem from="1606763827665" duration="2516000" />
+      <workItem from="1606773498354" duration="1967000" />
+      <workItem from="1606828368445" duration="5245000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="text">
+                    <value>
+                      <list>
+                        <option value="version for 2." />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="988" y="102" width="800" height="675" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606311831467">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="988" y="102" width="800" height="675" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1606311831467" />
+    <state x="583" y="359" width="840" height="392" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606832126215">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="583" y="359" width="840" height="392" key="#com.intellij.fileTypes.FileTypeChooser/0.34.1920.1046@0.34.1920.1046" timestamp="1606832126215" />
+    <state x="100" y="134" width="1720" height="846" key="DiffContextDialog" timestamp="1606763824933">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="100" y="134" width="1720" height="846" key="DiffContextDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1606763824933" />
+    <state x="721" y="315" key="FileChooserDialogImpl" timestamp="1606835489680">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="721" y="315" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1606835489680" />
+    <state x="794" y="320" width="321" height="471" key="RollbackChangesDialog" timestamp="1606750569754">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="794" y="320" width="321" height="471" key="RollbackChangesDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1606750569754" />
+    <state x="548" y="274" width="813" height="564" key="VcsDiffUtil.ChangesDialog" timestamp="1606763818439">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="548" y="274" width="813" height="564" key="VcsDiffUtil.ChangesDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1606763818439" />
+    <state x="644" y="296" width="631" height="522" key="find.popup" timestamp="1606752259235">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="644" y="296" width="631" height="522" key="find.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1606752259235" />
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1606750553068">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1606750553068" />
+  </component>
+</project>

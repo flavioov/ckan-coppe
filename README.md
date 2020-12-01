@@ -1,5 +1,8 @@
 # ckan-coppe
 
+[sobre o geoserver](https://docs.geoserver.org/stable/en/user/index.html)
+
+
 # Instalação ckan via pacote
 obs: CKAN 2.8 is Python 2.x only.
      CKAN 2.9 is planned to be compatible with both Python 2 and Python 3.
@@ -67,6 +70,7 @@ obs: CKAN 2.8 is Python 2.x only.
      CKAN 3.0 released afterward would be Python 3 only.
 
 ## checkout tags/ckan-2.8.6
+[sobre o geoserver](https://docs.geoserver.org/stable/en/user/index.html)
 
 Debian Gis repo:
 https://debian-gis-team.pages.debian.net/
@@ -125,6 +129,9 @@ BackendUnavailable
 [Solução](https://github.com/ckan/ckan/issues/5618): pip install -U pipenv
 
 #### Gdal
+resumo:
+* 
+
 erro: pip install gdal
 ```text
 extensions/gdal_wrap.cpp:3177:27: fatal error: cpl_vsi_error.h: No such file or directory
@@ -139,6 +146,100 @@ extensions/gdal_wrap.cpp:3177:27: fatal error: cpl_vsi_error.h: No such file or 
 [instalar manualmente](https://www.geofis.org/en/install/install-on-linux/install-gdal-from-sources/)
 [geospatial related pluguins](https://docs.ckan.org/projects/ckanext-spatial/en/latest/)
 
-https://github.com/GeoinformationSystems/ckanext-geoserver
+[geoserver repository]https://github.com/GeoinformationSystems/ckanext-geoserver
 
-## checkout tags/ckan-2.9.1
+## checkout tags/ckan-2.9.0
+[sobre o geoserver](https://docs.geoserver.org/stable/en/user/index.html)
+
+
+adicionar à instalação do ckan(dockerfile do ckan): checkinstall
+e instalar o libgdal-dev manualmente
+
+```dockerfile
+RUN wget http://download.osgeo.org/gdal/2.2.4/gdal-2.2.4.tar.gz \
+        && tar -xvzf gdal-2.2.4.tar.gz \
+        && cd gdal-2.2.4 \
+        && ./configure --prefix=/usr \
+        && make \
+        && checkinstall
+```
+
+no ambiente pip do ckan (container): 
+
+```text
+source $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/
+
+pip install pillow gsconfig owgs==0.8.2 gdal==2.2.4
+python setup.py install
+python setup.py develop
+cd ..
+pip install ckanext-geoserver
+```
+
+erro: 
+````text
+{...}
+File "/usr/lib/ckan/venv/src/ckanext-geoserver/ckanext/geoserver/model/Datastored.py", line 2, in <module>
+import ckanext.datastore.db as db
+ImportError: No module named db
+````
+
+solução: instalar datastore antigo
+
+```text
+git clone https://github.com/datagovuk/ckanext-datastore.git
+obs: adicionar o seguinte código aos __init__.py 
+```
+erro:
+```text
+error: Namespace package problem: bedetsplug is a namespace package, but its
+__init__.py does not call declare_namespace()! Please fix it.
+```
+
+Solução: adicionar o seguinte código aos __init__.py do datastore
+
+```text
+# this is a namespace package
+try:
+    import pkg_resources
+    pkg_resources.declare_namespace(__name__)
+except ImportError:     
+    import pkgutil
+    __path__ = pkgutil.extend_path(__path__, __name__)
+```
+
+erro: ckan não consegue inicializar por causa da extensão geoserver não conseguir importar o módulo storage.
+
+```text
+{...}
+ckan          |     from ckanext.geoserver.model.ShapeFile import Shapefile
+ckan          |   File "/usr/lib/ckan/venv/src/ckanext-geoserver/ckanext/geoserver/model/ShapeFile.py", line 6, in <module>
+ckan          |     from ckanext.geoserver.misc.helpers import file_path_from_url
+ckan          |   File "/usr/lib/ckan/venv/src/ckanext-geoserver/ckanext/geoserver/misc/helpers.py", line 6, in <module>
+ckan          |     from ckan.controllers import storage
+ckan          | ImportError: cannot import name storage
+
+```
+OBS: O nome storage é um script '.py' disponível dentro do ckan em $HOME_CKAN/src/ckan/ckan/controllers. Porém este
+arquivo está disponível no ckan apenas até a versão 2.8.6. Ainda assim, não é possível instalar o geoserver nesta versão
+ pois o erro na execução de geoserver "ImportError: No module named db" é solucionado quando da instalação da extensao 
+ datastore (datagovuk), entretanto tal extensão demanda a versão exata 2.4.5 do psycopg2 que é a versão nativa do 
+ ckan v2.7.9 ou versões anteriores.
+
+
+## checkout tags/ckan-2.7.9
+
+* alteração dockerfile ckan
+* alteração docker-composer
+* alteração dockerfile postgresql
+
+
+```text
+echo "deb-src http://gb.archive.ubuntu.com/ubuntu/ xenial main restricted" | sudo tee -a /etc/apt/sources.list
+ou 
+apt-get instal -y software-properties-common
+apt-add-repository ppa:ubuntugis/ubuntugis-unstable
+```
+
+
+
