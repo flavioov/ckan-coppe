@@ -103,8 +103,8 @@ RUN chmod +x /ckan-entrypoint.sh
 ENTRYPOINT ["/ckan-entrypoint.sh"]
 
 # Volumes
-VOLUME ["/etc/ckan/default"]
-VOLUME ["/var/lib/ckan"]
+#VOLUME ["/etc/ckan/default"]
+#VOLUME ["/var/lib/ckan"]
 
 USER ckan
 EXPOSE 5000
