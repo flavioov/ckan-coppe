@@ -230,8 +230,19 @@ arquivo está disponível no ckan apenas até a versão 2.8.6. Ainda assim, não
 ## checkout tags/ckan-2.7.9
 
 * alteração dockerfile ckan
-* alteração docker-composer
+* alteração docker-compose
 * alteração dockerfile postgresql
+* alteração ckan-entrypoint.sh
+* alteração .env
+  
+* configuração do container
+1) abrir o container
+2) entrar no ambiente pip
+3) ir ao direorio $CKAN_HOME/src
+4) clonar os repositórios [datasotre](https://github.com/flavioov/ckanext-datastore.git) e [geoserver](https://github.com/ngds/ckanext-geoserver.git) (pip install -e pasta)
+5) instalar dependências do geoserver (obs: atualizar setuptools e instalar o gdal==2.4.4)
+6) adicionar os plugins no arquivo de configuração do ckan (ckan.ini - encontrar (fora do container) via docker volume inspect ckan_config)
+7) reiniciar o ckan
 
 ### datastore
 obs: [pacote python possivelmente alternativo com o módulo db presente](https://pypi.org/project/ckanext-datastore_ts/#modal-close)
@@ -263,5 +274,24 @@ erro: datastore
 ```text
 ckanext.datastore.plugin.DatastoreException: ckan.datastore_write_url not found in config
 ```
+
+Solução: Adicionar em ckan-entrypoint.sh/set_environmets variaveis de ambiente:
+
+```shell
+set_environment () {
+  export CKAN_SQLALCHEMY_URL=${CKAN_SQLALCHEMY_URL}
+  export CKAN_SOLR_URL=${CKAN_SOLR_URL}
+  export CKAN_REDIS_URL=${CKAN_REDIS_URL}
+  export CKAN_STORAGE_PATH=${CKAN_STORAGE_PATH}
+  export CKAN_SITE_URL=${CKAN_SITE_URL}
+  # Variaveis adicionadas
+  export CKAN_STORAGE_PATH=/var/lib/ckan
+  export CKAN_DATAPUSHER_URL=${CKAN_DATAPUSHER_URL}
+  export CKAN_DATASTORE_WRITE_URL=${CKAN_DATASTORE_WRITE_URL}
+  export CKAN_DATASTORE_READ_URL=${CKAN_DATASTORE_READ_URL}
+  export CKAN_SITE_URL=${CKAN_SITE_URL}
+```
+
+obs: talvez tenha que ser adicionadas as variaveis do geoserver
 
 
