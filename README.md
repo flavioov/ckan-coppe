@@ -233,13 +233,35 @@ arquivo está disponível no ckan apenas até a versão 2.8.6. Ainda assim, não
 * alteração docker-composer
 * alteração dockerfile postgresql
 
+### datastore
+obs: [pacote python possivelmente alternativo com o módulo db presente](https://pypi.org/project/ckanext-datastore_ts/#modal-close)
+
+mesmos passo seguidos para a solução dos problemas na instalação do ckan, todavia
+a instalação do ckanext-datastore via 'python setup.py install' retorna o seguinte erro; (tentar fazer a instalação via pip install -e)
+```
+ckan          | File "/usr/lib/ckan/default/lib/python2.7/site-packages/ckanext/datastore/plugin.py", line 32, in configure
+ckan          |     raise DatastoreException(error_msg)
+ckan          | ckanext.datastore.plugin.DatastoreException: ckan.datastore_write_url not found in config
+
+```
+obs: https://git.govcloud.dk/SebastianEsp/dataset_catalogue.git
 
 ```text
+Adição de repositórios no ubuntu
+
 echo "deb-src http://gb.archive.ubuntu.com/ubuntu/ xenial main restricted" | sudo tee -a /etc/apt/sources.list
 ou 
 apt-get instal -y software-properties-common
 apt-add-repository ppa:ubuntugis/ubuntugis-unstable
 ```
 
+erro: datastore 
+ geoserver - instalação ok
+ datastore - instalação ok
+ datastore - carregamento do pluguin: erro
+
+```text
+ckanext.datastore.plugin.DatastoreException: ckan.datastore_write_url not found in config
+```
 
 

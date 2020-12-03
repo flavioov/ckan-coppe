@@ -1,0 +1,467 @@
+Attaching to ckan
+[36mckan          |[0m Distribution already installed:
+[36mckan          |[0m   ckan 2.7.9 from /usr/lib/ckan/default/src/ckan
+[36mckan          |[0m Creating /etc/ckan/default/ckan.ini
+[36mckan          |[0m Now you should edit the config files
+[36mckan          |[0m   /etc/ckan/default/ckan.ini
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 129, in load_all
+[36mckan          |[0m     unload_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 182, in unload_all
+[36mckan          |[0m     unload(*reversed(_PLUGINS))
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 210, in unload
+[36mckan          |[0m     plugins_update()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 121, in plugins_update
+[36mckan          |[0m     environment.update_config()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 268, in update_config
+[36mckan          |[0m     model.init_model(engine)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/model/__init__.py", line 156, in init_model
+[36mckan          |[0m     version_table = Table('migrate_version', meta.metadata, autoload=True)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/sql/schema.py", line 352, in __new__
+[36mckan          |[0m     table._init(name, metadata, *args, **kw)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/sql/schema.py", line 425, in _init
+[36mckan          |[0m     self._autoload(metadata, autoload_with, include_columns)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/sql/schema.py", line 448, in _autoload
+[36mckan          |[0m     self, include_columns, exclude_columns
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1670, in run_callable
+[36mckan          |[0m     with self.contextual_connect() as conn:
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1737, in contextual_connect
+[36mckan          |[0m     self.pool.connect(),
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/pool.py", line 332, in connect
+[36mckan          |[0m     return _ConnectionFairy._checkout(self)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/pool.py", line 630, in _checkout
+[36mckan          |[0m     fairy = _ConnectionRecord.checkout(pool)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/pool.py", line 433, in checkout
+[36mckan          |[0m     rec = pool._do_get()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/pool.py", line 949, in _do_get
+[36mckan          |[0m     return self._create_connection()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/pool.py", line 278, in _create_connection
+[36mckan          |[0m     return _ConnectionRecord(self)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/pool.py", line 404, in __init__
+[36mckan          |[0m     self.connection = self.__connect()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/pool.py", line 530, in __connect
+[36mckan          |[0m     connection = self.__pool._creator()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/engine/strategies.py", line 95, in connect
+[36mckan          |[0m     connection_invalidated=invalidated
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/util/compat.py", line 189, in raise_from_cause
+[36mckan          |[0m     reraise(type(exception), exception, tb=exc_tb)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/engine/strategies.py", line 89, in connect
+[36mckan          |[0m     return dialect.connect(*cargs, **cparams)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py", line 376, in connect
+[36mckan          |[0m     return self.dbapi.connect(*cargs, **cparams)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/psycopg2/__init__.py", line 179, in connect
+[36mckan          |[0m     connection_factory=connection_factory, async=async)
+[36mckan          |[0m sqlalchemy.exc.OperationalError: (OperationalError) could not connect to server: Connection refused
+[36mckan          |[0m 	Is the server running on host "db" (172.26.0.4) and accepting
+[36mckan          |[0m 	TCP/IP connections on port 5432?
+[36mckan          |[0m  None None
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m 2020-12-01 22:01:54,106 INFO  [ckan.lib.base]  / render time 0.639 seconds
+[36mckan          |[0m 2020-12-01 22:01:54,463 INFO  [ckan.lib.base]  /api/i18n/en render time 0.002 seconds
+[36mckan          |[0m 2020-12-01 22:01:55,799 INFO  [ckan.lib.base]  /organization render time 0.141 seconds
+[36mckan          |[0m 2020-12-01 22:01:55,965 INFO  [ckan.lib.base]  /api/i18n/en render time 0.003 seconds
+[36mckan          |[0m 2020-12-01 22:02:00,168 INFO  [ckan.lib.base]  /dataset render time 0.068 seconds
+[36mckan          |[0m 2020-12-01 22:02:00,309 INFO  [ckan.lib.base]  /api/i18n/en render time 0.004 seconds
+[36mckan          |[0m 2020-12-01 22:02:01,489 INFO  [ckan.lib.base]  /dataset render time 0.024 seconds
+[36mckan          |[0m 2020-12-01 22:02:01,646 INFO  [ckan.lib.base]  /api/i18n/en render time 0.006 seconds
+[36mckan          |[0m 2020-12-01 22:02:01,950 INFO  [ckan.lib.base]  / render time 0.021 seconds
+[36mckan          |[0m 2020-12-01 22:02:02,092 INFO  [ckan.lib.base]  /api/i18n/en render time 0.007 seconds
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 153, in load
+[36mckan          |[0m     service = _get_service(plugin)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 255, in _get_service
+[36mckan          |[0m     return plugin.load()(name=plugin_name)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2203, in load
+[36mckan          |[0m     return self.resolve()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2209, in resolve
+[36mckan          |[0m     module = __import__(self.module_name, fromlist=['__name__'], level=0)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/plugin.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.geoserver.logic.action as action
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/logic/action.py", line 5, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Layer import Layer
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Layer.py", line 4, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Datastored import Datastored
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Datastored.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.datastore.db as db
+[36mckan          |[0m ImportError: No module named db
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 153, in load
+[36mckan          |[0m     service = _get_service(plugin)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 255, in _get_service
+[36mckan          |[0m     return plugin.load()(name=plugin_name)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2203, in load
+[36mckan          |[0m     return self.resolve()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2209, in resolve
+[36mckan          |[0m     module = __import__(self.module_name, fromlist=['__name__'], level=0)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/plugin.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.geoserver.logic.action as action
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/logic/action.py", line 5, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Layer import Layer
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Layer.py", line 4, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Datastored import Datastored
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Datastored.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.datastore.db as db
+[36mckan          |[0m ImportError: No module named db
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 153, in load
+[36mckan          |[0m     service = _get_service(plugin)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 255, in _get_service
+[36mckan          |[0m     return plugin.load()(name=plugin_name)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2203, in load
+[36mckan          |[0m     return self.resolve()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2209, in resolve
+[36mckan          |[0m     module = __import__(self.module_name, fromlist=['__name__'], level=0)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/plugin.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.geoserver.logic.action as action
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/logic/action.py", line 5, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Layer import Layer
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Layer.py", line 4, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Datastored import Datastored
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Datastored.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.datastore.db as db
+[36mckan          |[0m ImportError: No module named db
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 153, in load
+[36mckan          |[0m     service = _get_service(plugin)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 255, in _get_service
+[36mckan          |[0m     return plugin.load()(name=plugin_name)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2203, in load
+[36mckan          |[0m     return self.resolve()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2209, in resolve
+[36mckan          |[0m     module = __import__(self.module_name, fromlist=['__name__'], level=0)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/plugin.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.geoserver.logic.action as action
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/logic/action.py", line 5, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Layer import Layer
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Layer.py", line 4, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Datastored import Datastored
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Datastored.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.datastore.db as db
+[36mckan          |[0m ImportError: No module named db
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 153, in load
+[36mckan          |[0m     service = _get_service(plugin)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 255, in _get_service
+[36mckan          |[0m     return plugin.load()(name=plugin_name)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2203, in load
+[36mckan          |[0m     return self.resolve()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2209, in resolve
+[36mckan          |[0m     module = __import__(self.module_name, fromlist=['__name__'], level=0)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/plugin.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.geoserver.logic.action as action
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/logic/action.py", line 5, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Layer import Layer
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Layer.py", line 4, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Datastored import Datastored
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Datastored.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.datastore.db as db
+[36mckan          |[0m ImportError: No module named db
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 153, in load
+[36mckan          |[0m     service = _get_service(plugin)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 255, in _get_service
+[36mckan          |[0m     return plugin.load()(name=plugin_name)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2203, in load
+[36mckan          |[0m     return self.resolve()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2209, in resolve
+[36mckan          |[0m     module = __import__(self.module_name, fromlist=['__name__'], level=0)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/plugin.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.geoserver.logic.action as action
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/logic/action.py", line 5, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Layer import Layer
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Layer.py", line 4, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Datastored import Datastored
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Datastored.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.datastore.db as db
+[36mckan          |[0m ImportError: No module named db
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 153, in load
+[36mckan          |[0m     service = _get_service(plugin)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 255, in _get_service
+[36mckan          |[0m     return plugin.load()(name=plugin_name)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2203, in load
+[36mckan          |[0m     return self.resolve()
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2209, in resolve
+[36mckan          |[0m     module = __import__(self.module_name, fromlist=['__name__'], level=0)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/plugin.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.geoserver.logic.action as action
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/logic/action.py", line 5, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Layer import Layer
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Layer.py", line 4, in <module>
+[36mckan          |[0m     from ckanext.geoserver.model.Datastored import Datastored
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckanext-geoserver/ckanext/geoserver/model/Datastored.py", line 3, in <module>
+[36mckan          |[0m     import ckanext.datastore.db as db
+[36mckan          |[0m ImportError: No module named db
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 167, in load
+[36mckan          |[0m     plugins_update()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 121, in plugins_update
+[36mckan          |[0m     environment.update_config()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 271, in update_config
+[36mckan          |[0m     plugin.configure(config)
+[36mckan          |[0m   File "/usr/lib/ckan/default/lib/python2.7/site-packages/ckanext/datastore/plugin.py", line 32, in configure
+[36mckan          |[0m     raise DatastoreException(error_msg)
+[36mckan          |[0m ckanext.datastore.plugin.DatastoreException: ckan.datastore_write_url not found in config
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 167, in load
+[36mckan          |[0m     plugins_update()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 121, in plugins_update
+[36mckan          |[0m     environment.update_config()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 271, in update_config
+[36mckan          |[0m     plugin.configure(config)
+[36mckan          |[0m   File "/usr/lib/ckan/default/lib/python2.7/site-packages/ckanext/datastore/plugin.py", line 32, in configure
+[36mckan          |[0m     raise DatastoreException(error_msg)
+[36mckan          |[0m ckanext.datastore.plugin.DatastoreException: ckan.datastore_write_url not found in config
+[36mckan          |[0m Traceback (most recent call last):
+[36mckan          |[0m   File "/usr/local/bin/ckan-paster", line 8, in <module>
+[36mckan          |[0m     sys.exit(run())
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 102, in run
+[36mckan          |[0m     invoke(command, command_name, options, args[1:])
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 141, in invoke
+[36mckan          |[0m     exit_code = runner.run(args)
+[36mckan          |[0m   File "/usr/lib/ckan/default/local/lib/python2.7/site-packages/paste/script/command.py", line 236, in run
+[36mckan          |[0m     result = self.command()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 333, in command
+[36mckan          |[0m     self._load_config(cmd!='upgrade')
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 306, in _load_config
+[36mckan          |[0m     self.site_user = load_config(self.options.config, load_site_user)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/lib/cli.py", line 221, in load_config
+[36mckan          |[0m     load_environment(conf.global_conf, conf.local_conf)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 99, in load_environment
+[36mckan          |[0m     p.load_all()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 139, in load_all
+[36mckan          |[0m     load(*plugins)
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 167, in load
+[36mckan          |[0m     plugins_update()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/plugins/core.py", line 121, in plugins_update
+[36mckan          |[0m     environment.update_config()
+[36mckan          |[0m   File "/usr/lib/ckan/default/src/ckan/ckan/config/environment.py", line 271, in update_config
+[36mckan          |[0m     plugin.configure(config)
+[36mckan          |[0m   File "/usr/lib/ckan/default/lib/python2.7/site-packages/ckanext/datastore/plugin.py", line 32, in configure
+[36mckan          |[0m     raise DatastoreException(error_msg)
+[36mckan          |[0m ckanext.datastore.plugin.DatastoreException: ckan.datastore_write_url not found in config
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509
+[36mckan          |[0m Initialising DB: SUCCESS
+[36mckan          |[0m /usr/lib/ckan/default/local/lib/python2.7/site-packages/OpenSSL/crypto.py:14: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+[36mckan          |[0m   from cryptography import utils, x509

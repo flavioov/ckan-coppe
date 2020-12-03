@@ -38,8 +38,8 @@ RUN wget https://download.osgeo.org/gdal/2.4.4/gdal-2.4.4.tar.gz \
         && ./configure --prefix=/usr \
         && make \
         && checkinstall \
-        && rm -rf gdal-2.4.4 \
-        && rm gdal-2.4.4.tar.gz
+        && rm -rf gdal-2.4.4
+#        && rm gdal-2.4.4.tar.gz
 
 RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
 RUN export C_INCLUDE_PATH=/usr/include/gdal
