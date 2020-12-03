@@ -22,15 +22,6 @@ set_environment () {
   export CKAN_REDIS_URL=${CKAN_REDIS_URL}
   export CKAN_STORAGE_PATH=${CKAN_STORAGE_PATH}
   export CKAN_SITE_URL=${CKAN_SITE_URL}
-  # from ckan v2.9.0
-  export CKAN_STORAGE_PATH=/var/lib/ckan
-  export CKAN_DATAPUSHER_URL=${CKAN_DATAPUSHER_URL}
-  export CKAN_DATASTORE_WRITE_URL=${CKAN_DATASTORE_WRITE_URL}
-  export CKAN_DATASTORE_READ_URL=${CKAN_DATASTORE_READ_URL}
-  export CKAN_SITE_URL=${CKAN_SITE_URL}
-
-
-
 }
 
 write_config () {
@@ -85,7 +76,7 @@ if [ -z "$CKAN_SOLR_URL" ]; then
     abort "ERROR: no CKAN_SOLR_URL specified and linked container called 'solr' was not found"
   fi
 fi
-
+    
 if [ -z "$CKAN_REDIS_URL" ]; then
   if ! CKAN_REDIS_URL=$(link_redis_url); then
     abort "ERROR: no CKAN_REDIS_URL specified and linked container called 'redis' was not found"

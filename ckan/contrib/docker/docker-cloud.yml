@@ -4,6 +4,7 @@ ckan:
     - db
     - solr
     - redis
+    - datapusher
   ports:
     - "80:5000"
 db:
