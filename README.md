@@ -230,10 +230,18 @@ arquivo está disponível no ckan apenas até a versão 2.8.6. Ainda assim, não
 ## checkout tags/ckan-2.7.9
 
 * alteração dockerfile ckan
+  adicionar instalação do gdal
+  instalar plugins: datastore + geoserver
+  instalar depenências do geoserver: setuptools (atualizar) pillow gdal==2.4.4. gsconfig owslib==0.8.2
 * alteração docker-compose
+  adicionar variáveis de ambiente a serem importadas do .env e adicionadas ao ckan-entrypoint e mimetizar a versão 2.9.0
 * alteração dockerfile postgresql
+  mimetizar a versão 2.9.0
 * alteração ckan-entrypoint.sh
+  adicionar as configurações destinadas ao ckan.ini do datastore datapuhser geoserver e o que for usar (mesmo do docker-composer)
+  . Aparentemente pelo ckan.ini apenas se ativa os plugins.
 * alteração .env
+    adicionar as variáveis adicionadas ao docker-compose e ao ckan-entrypoint
   
 * configuração do container
 1) abrir o container

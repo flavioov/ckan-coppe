@@ -3,7 +3,6 @@
 FROM ubuntu:16.04
 MAINTAINER Open Knowledge
 
-
 # Define environment variables
 ENV CKAN_USER_HOME /usr/lib/ckan
 ENV CKAN_HOME /usr/lib/ckan/default
@@ -14,6 +13,8 @@ ENV CKAN_SITE_URL http://localhost:5000
 ENV CKAN_VENV $CKAN_USER_HOME/default
 #ENV CKAN_CONFIG /etc/ckan
 #ENV CKAN_STORAGE_PATH=/var/lib/ckan
+
+ENV GDAL_VERSION 2.4.4
 
 
 # Install required packages
@@ -32,13 +33,13 @@ RUN apt-get -q -y update && apt-get -q -y upgrade \
       vim \
       && apt-get -q clean
 
-RUN wget https://download.osgeo.org/gdal/2.4.4/gdal-2.4.4.tar.gz \
-        && tar -xvzf gdal-2.4.4.tar.gz \
-        && cd gdal-2.4.4 \
+RUN wget https://download.osgeo.org/gdal/2.4.4/gdal-$GDAL_VERSION.tar.gz \
+        && tar -xvzf gdal-$GDAL_VERSION.tar.gz \
+        && cd gdal-$GDAL_VERSION \
         && ./configure --prefix=/usr \
         && make \
         && checkinstall \
-        && rm -rf gdal-2.4.4
+        && rm -rf gdal-$GDAL_VERSION
 #        && rm gdal-2.4.4.tar.gz
 
 RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
@@ -95,6 +96,11 @@ RUN ckan-pip install -U pip && \
     cp -v $CKAN_VENV/src/ckan/contrib/docker/ckan-entrypoint.sh /ckan-entrypoint.sh && \
     chmod +x /ckan-entrypoint.sh && \
     chown -R ckan:ckan $CKAN_USER_HOME $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH
+
+# Geoserver and Datastore extension
+RUN ckan-pip install -U setuptools pillow gsconfig gdal==$GDAL_VERSION owslib==0.8.2 && \
+    ckan-pip install -e 'git+https://github.com/ngds/ckanext-geoserver.git#egg=ckanext-geoserver' && \
+    ckan-pip install -e 'git+https://github.com/datagovuk/ckanext-datastore.git#egg=ckanext-datastore'
 
 
 # SetUp EntryPoint

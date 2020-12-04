@@ -29,8 +29,6 @@ set_environment () {
   export CKAN_DATASTORE_READ_URL=${CKAN_DATASTORE_READ_URL}
   export CKAN_SITE_URL=${CKAN_SITE_URL}
 
-
-
 }
 
 write_config () {
