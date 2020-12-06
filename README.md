@@ -309,3 +309,7 @@ Note A workspace name is a identifier describing your project. It must not excee
 A Namespace URI (Uniform Resource Identifier) can usually be a URL associated with your project with an added 
 trailing identifier indicating the workspace. The Namespace URI filed does not need to resolve to an actual valid 
 web address.
+
+python2-lxml
+pip install lxml
+pip install http
