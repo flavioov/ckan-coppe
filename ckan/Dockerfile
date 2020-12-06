@@ -91,10 +91,6 @@ RUN ckan-pip install -U pip && \
     chmod +x /ckan-entrypoint.sh && \
     chown -R ckan:ckan $CKAN_USER_HOME $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH
 
-# Geoserver and Datastore extension
-# não instalar (deveria) mas, pelo menos, já baixa os pacotes
-RUN ckan-pip install -U setuptools ndg-httpsclient && \
-    ckan-pip install pillow gsconfig gdal==$GDAL_VERSION owslib==0.8.2
 
 RUN mkdir /var/tmp/GeoserverUpload && \
     chmod 777 -R /var/tmp && \
@@ -108,5 +104,12 @@ RUN chmod +x /ckan-entrypoint.sh
 ENTRYPOINT ["/ckan-entrypoint.sh"]
 
 USER ckan
+
+# Geoserver and Datastore extension
+# não instalar (deveria) mas, pelo menos, já baixa os pacotes
+#RUN ckan-pip install -U setuptools ndg-httpsclient && \
+#    ckan-pip install pillow gsconfig gdal==$GDAL_VERSION owslib==0.8.2
+
+
 EXPOSE 5000
 CMD ["ckan-paster","serve","/etc/ckan/default/ckan.ini"]
