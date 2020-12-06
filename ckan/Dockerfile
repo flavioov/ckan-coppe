@@ -9,13 +9,9 @@ ENV CKAN_HOME /usr/lib/ckan/default
 ENV CKAN_CONFIG /etc/ckan/default
 ENV CKAN_STORAGE_PATH /var/lib/ckan
 ENV CKAN_SITE_URL http://localhost:5000
-
 ENV CKAN_VENV $CKAN_USER_HOME/default
-#ENV CKAN_CONFIG /etc/ckan
-#ENV CKAN_STORAGE_PATH=/var/lib/ckan
 
 ENV GDAL_VERSION 2.4.4
-
 
 # Install required packages
 RUN apt-get -q -y update && apt-get -q -y upgrade \
@@ -28,24 +24,24 @@ RUN apt-get -q -y update && apt-get -q -y upgrade \
       libssl-dev \
       git-core \
       wget \
+#      build-dep \ #erro ...
       python-imaging \
       checkinstall \
       vim \
       && apt-get -q clean
 
-RUN wget https://download.osgeo.org/gdal/2.4.4/gdal-$GDAL_VERSION.tar.gz \
+# GDAL
+RUN wget https://download.osgeo.org/gdal/$GDAL_VERSION/gdal-$GDAL_VERSION.tar.gz \
         && tar -xvzf gdal-$GDAL_VERSION.tar.gz \
         && cd gdal-$GDAL_VERSION \
         && ./configure --prefix=/usr \
         && make \
         && checkinstall \
         && rm -rf gdal-$GDAL_VERSION
-#        && rm gdal-2.4.4.tar.gz
 
 RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
 RUN export C_INCLUDE_PATH=/usr/include/gdal
 
-#######################
 
 
 # Build-time variables specified by docker-compose.yml / .env
@@ -62,7 +58,6 @@ RUN mkdir -p $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH && \
     ln -s $CKAN_VENV/bin/paster /usr/local/bin/ckan-paster &&\
     ln -s $CKAN_VENV/bin/ckan /usr/local/bin/ckan
 
-#######################
 
 # Update pip version
 RUN ckan-pip install -U pip
@@ -81,11 +76,6 @@ RUN ckan-pip install --upgrade -r $CKAN_HOME/src/ckan/dev-requirements.txt
 # TMP-BUGFIX https://github.com/ckan/ckan/issues/3594
 RUN ckan-pip install --upgrade urllib3
 
-# SetUp CKAN
-#ADD . $CKAN_VENV/src/ckan/
-#RUN ckan-pip install -e $CKAN_VENV/src/ckan/
-#RUN ln -s $CKAN_HOME/src/ckan/ckan/config/who.ini $CKAN_CONFIG/who.ini
-
 # Setup CKAN
 ADD . $CKAN_VENV/src/ckan/
 RUN ckan-pip install -U pip && \
@@ -98,19 +88,22 @@ RUN ckan-pip install -U pip && \
     chown -R ckan:ckan $CKAN_USER_HOME $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH
 
 # Geoserver and Datastore extension
-RUN ckan-pip install -U setuptools pillow gsconfig gdal==$GDAL_VERSION owslib==0.8.2 && \
-    ckan-pip install -e 'git+https://github.com/ngds/ckanext-geoserver.git#egg=ckanext-geoserver' && \
-    ckan-pip install -e 'git+https://github.com/datagovuk/ckanext-datastore.git#egg=ckanext-datastore'
+# não instalar (deveria) mas, pelo menos, já baixa os pacotes
+RUN ckan-pip install -U setuptools ndg-httpsclient && \
+    ckan-pip install pillow gsconfig gdal==$GDAL_VERSION owslib==0.8.2 && \
+    ckan-pip install -e 'git+https://github.com/GeoinformationSystems/ckanext-geoserver.git#egg=ckanext-geoserver' && \
+    ckan-pip install -e 'git+https://github.com/flavioov/ckanext-datastore.git#egg=ckanext-datastore'
 
+RUN mkdir /var/tmp/GeoserverUpload && \
+    chmod 777 -R /var/tmp && \
+    chmod 777 -R /var/tmp/GeoserverUpload
+
+ADD ../geoservice/* /var/tmp/GeoserverUpload/
 
 # SetUp EntryPoint
 COPY ./contrib/docker/ckan-entrypoint.sh /
 RUN chmod +x /ckan-entrypoint.sh
 ENTRYPOINT ["/ckan-entrypoint.sh"]
-
-# Volumes
-#VOLUME ["/etc/ckan/default"]
-#VOLUME ["/var/lib/ckan"]
 
 USER ckan
 EXPOSE 5000

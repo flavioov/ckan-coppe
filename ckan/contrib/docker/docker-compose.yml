@@ -26,19 +26,30 @@ services:
     ports:
       - "0.0.0.0:${CKAN_PORT}:5000"
     environment:
-      - CKAN_DATASTORE_WRITE_URL=postgresql://ckan:ckan@db/datastore
-      - CKAN_DATASTORE_READ_URL=postgresql://datastore_ro:datastore@db/datastore]
-      - CKAN_SQLALCHEMY_URL=postgresql://ckan:ckan@db/ckan
-      - CKAN_STORAGE_PATH=/var/lib/ckan
-      - CKAN_DATAPUSHER_URL=http://datapusher:8800/
-      - CKAN_SITE_URL=http://127.0.0.1:5000
-      - DB_PORT_5432_TCP_ADDR=db
-      - DB_PORT_5432_TCP_PORT=5432
-      - SOLR_PORT_8983_TCP_ADDR=solr
-      - SOLR_PORT_8983_TCP_PORT=8983
-      - REDIS_PORT_6379_TCP_ADDR=redis
-      - REDIS_PORT_6379_TCP_PORT=6379
-
+      - CKAN_DATASTORE_WRITE_URL=postgresql://${POSTGRES_LOGIN}:${POSTGRES_PASSWORD}@${DB_PORT_5432_TCP_ADDR}/datastore
+      - CKAN_DATASTORE_READ_URL=postgresql://${DATASTORE_READONLY_LOGIN}:${DATASTORE_READONLY_PASSWORD}@${DB_PORT_5432_TCP_ADDR}/datastore
+      - CKAN_SQLALCHEMY_URL=postgresql://${POSTGRES_LOGIN}:${POSTGRES_PASSWORD}@${DB_PORT_5432_TCP_ADDR}/ckan
+      - CKAN_STORAGE_PATH=${CKAN_STORAGE_PATH}
+      - CKAN_DATAPUSHER_URL=${CKAN_DATAPUSHER_URL}
+      - CKAN_DATAPUSHER_FORMATS=${CKAN_DATAPUSHER_FORMATS}
+      - CKAN_DATAPUSHER_ASSUME_TASTK_STALE_AFTER=${CKAN_DATAPUSHER_ASSUME_TASTK_STALE_AFTER}
+      - CKAN_SITE_URL=${CKAN_SITE_URL}
+      - DB_PORT_5432_TCP_ADDR={DB_PORT_5432_TCP_ADDR}
+      - DB_PORT_5432_TCP_PORT={DB_PORT_5432_TCP_PORT}
+      - SOLR_PORT_8983_TCP_ADDR=${SOLR_PORT_8983_TCP_ADDR}
+      - SOLR_PORT_8983_TCP_PORT=${SOLR_PORT_8983_TCP_PORT}
+      - REDIS_PORT_6379_TCP_ADDR=${REDIS_PORT_6379_TCP_ADDR}
+      - REDIS_PORT_6379_TCP_PORT=${REDIS_PORT_6379_TCP_PORT}
+      - CKAN_STORAGE_DIRECTORY=${CKAN_STORAGE_DIRECTORY}
+      - CKAN_PLUGINS=${CKAN_PLUGINS}
+      - GEOSERVER_UPLOAD__SERVICE=${GEOSERVER_UPLOAD__SERVICE}
+      - GEOSERVER_REST__URL=${GEOSERVER_REST__URL}
+      - GEOSERVER_DEFAULT__WORKSPACE=${GEOSERVER_DEFAULT__WORKSPACE}
+      - GEOSERVER_WORKSPACE__NAME=${GEOSERVER_WORKSPACE__NAME}
+      - GEOSERVER_WORKSPACE__URI=${GEOSERVER_WORKSPACE__URI}
+      - GEOSERVER_DESCRIPTOR__ONLY=${GEOSERVER_DESCRIPTOR__ONLY}
+      - GEOSERVVER_DESCRIPTOR__NAME=${GEOSERVVER_DESCRIPTOR__NAME}
+      - CKAN_EXTRA__RESOURCE__FIELDS=${CKAN_EXTRA__RESOURCE__FIELDS}
     volumes:
       - ckan_config:/etc/ckan/default
       - ckan_home:/usr/lib/ckan/default
@@ -78,3 +89,15 @@ services:
   redis:
     container_name: redis
     image: redis:latest
+
+#  geoserver:
+#    container_name: geoserver
+#    build:
+#        context: ../../../geoserver
+#    links:
+#        - db
+#    depends_on:
+#        - db
+#    ports:
+#        - "8080:8080"
+#        - "9990:9990"

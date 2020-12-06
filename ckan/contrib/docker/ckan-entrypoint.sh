@@ -22,27 +22,43 @@ set_environment () {
   export CKAN_REDIS_URL=${CKAN_REDIS_URL}
   export CKAN_STORAGE_PATH=${CKAN_STORAGE_PATH}
   export CKAN_SITE_URL=${CKAN_SITE_URL}
-  # from ckan v2.9.0
-  export CKAN_STORAGE_PATH=/var/lib/ckan
+
+  # new
+  export CKAN_STORAGE_PATH=${CKAN_STORAGE_PATH}
   export CKAN_DATAPUSHER_URL=${CKAN_DATAPUSHER_URL}
+  export CKAN_DATAPUSHER_FORMATS=${CKAN_DATAPUSHER_FORMATS}
+  export CKAN_DATAPUSHER_ASSUME_TASTK_STALE_AFTER=${CKAN_DATAPUSHER_ASSUME_TASTK_STALE_AFTER}
   export CKAN_DATASTORE_WRITE_URL=${CKAN_DATASTORE_WRITE_URL}
   export CKAN_DATASTORE_READ_URL=${CKAN_DATASTORE_READ_URL}
   export CKAN_SITE_URL=${CKAN_SITE_URL}
+  export CKAN_PLUGINS=${CKAN_PLUGINS}
+
+  # geoserver
+  export CKAN_STORAGE_DIRECTORY=${CKAN_STORAGE_DIRECTORY}
+  export GEOSERVER_UPLOAD__SERVICE=${GEOSERVER_UPLOAD__SERVICE}
+  export GEOSERVER_REST__URL=${GEOSERVER_REST__URL}
+  export GEOSERVER_DEFAULT__WORKSPACE=${GEOSERVER_DEFAULT__WORKSPACE}
+  export GEOSERVER_WORKSPACE__NAME=${GEOSERVER_WORKSPACE__NAME}
+  export GEOSERVER_WORKSPACE__URI=${GEOSERVER_WORKSPACE__URI}
+  export GEOSERVER_DESCRIPTOR__ONLY=${GEOSERVER_DESCRIPTOR__ONLY}
+  export GEOSERVVER_DESCRIPTOR__NAME=${GEOSERVVER_DESCRIPTOR__NAME}
+  export CKAN_EXTRA__RESOURCE__FIELDS=${CKAN_EXTRA__RESOURCE__FIELDS}
+
 
 }
 
 write_config () {
   # Note that this only gets called if there is no config, see below!
   ckan-paster make-config --no-interactive ckan "$CONFIG"
-
-  # The variables above will be used by CKAN, but
-  # in case want to use the config from ckan.ini use this
-  #ckan-paster --plugin=ckan config-tool "$CONFIG" -e \
-  #    "sqlalchemy.url = ${CKAN_SQLALCHEMY_URL}" \
-  #    "solr_url = ${CKAN_SOLR_URL}" \
-  #    "ckan.redis.url = ${CKAN_REDIS_URL}" \
-  #    "ckan.storage_path = ${CKAN_STORAGE_PATH}" \
-  #    "ckan.site_url = ${CKAN_SITE_URL}"
+#
+#   The variables above will be used by CKAN, but
+#   in case want to use the config from ckan.ini use this
+#  ckan-paster --plugin=ckan config-tool "$CONFIG" -e \
+#      "sqlalchemy.url = ${CKAN_SQLALCHEMY_URL}" \
+#      "solr_url = ${CKAN_SOLR_URL}" \
+#      "ckan.redis.url = ${CKAN_REDIS_URL}" \
+#      "ckan.storage_path = ${CKAN_STORAGE_PATH}" \
+#      "ckan.site_url = ${CKAN_SITE_URL}"
 }
 
 link_postgres_url () {
