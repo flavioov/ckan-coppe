@@ -13,8 +13,8 @@ services:
   ckan:
     container_name: ckan
     build:
-      context: ../../../
-      dockerfile: ./ckan/Dockerfile
+      context: ../../
+      dockerfile: Dockerfile
       args:
         - CKAN_SITE_URL=${CKAN_SITE_URL}
     links:
