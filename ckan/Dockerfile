@@ -3,6 +3,7 @@
 FROM ubuntu:16.04
 MAINTAINER Open Knowledge
 
+
 # Define environment variables
 ENV CKAN_USER_HOME /usr/lib/ckan
 ENV CKAN_HOME /usr/lib/ckan/default
@@ -29,6 +30,9 @@ RUN apt-get -q -y update && apt-get -q -y upgrade \
       checkinstall \
       vim \
       && apt-get -q clean
+
+
+
 
 # GDAL
 RUN wget https://download.osgeo.org/gdal/$GDAL_VERSION/gdal-$GDAL_VERSION.tar.gz \
@@ -98,7 +102,7 @@ RUN mkdir /var/tmp/GeoserverUpload && \
     chmod 777 -R /var/tmp && \
     chmod 777 -R /var/tmp/GeoserverUpload
 
-ADD ../geoservice/* /var/tmp/GeoserverUpload/
+ADD ./geoservice/* /var/tmp/GeoserverUpload/
 
 # SetUp EntryPoint
 COPY ./contrib/docker/ckan-entrypoint.sh /
