@@ -7,4 +7,4 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     GRANT ALL PRIVILEGES ON DATABASE datastore TO ckan;
 EOSQL
 
-psql -d datastore -c 'CREATE EXTENSION postgis;'
+psql -U ckan -d datastore -c 'CREATE EXTENSION postgis;'

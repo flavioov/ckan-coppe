@@ -94,9 +94,7 @@ RUN ckan-pip install -U pip && \
 # Geoserver and Datastore extension
 # não instalar (deveria) mas, pelo menos, já baixa os pacotes
 RUN ckan-pip install -U setuptools ndg-httpsclient && \
-    ckan-pip install pillow gsconfig gdal==$GDAL_VERSION owslib==0.8.2 && \
-    ckan-pip install -e 'git+https://github.com/GeoinformationSystems/ckanext-geoserver.git#egg=ckanext-geoserver' && \
-    ckan-pip install -e 'git+https://github.com/flavioov/ckanext-datastore.git#egg=ckanext-datastore'
+    ckan-pip install pillow gsconfig gdal==$GDAL_VERSION owslib==0.8.2
 
 RUN mkdir /var/tmp/GeoserverUpload && \
     chmod 777 -R /var/tmp && \
