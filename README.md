@@ -310,6 +310,15 @@ A Namespace URI (Uniform Resource Identifier) can usually be a URL associated wi
 trailing identifier indicating the workspace. The Namespace URI filed does not need to resolve to an actual valid 
 web address.
 
+#### dependencias
 python2-lxml
 pip install lxml
-pip install http
+pip install -U ndg-httpsclient
+pip install usginmodels
+pip install shapely
+git clone https://github.com/ngds/ckanext-metadata
+
+[inicializa geoserver?](https://confluence.csiro.au/display/seegrid/CKAN+Spatial+Extensions+Setup+Guide)
+paster --plugin=ckanext-geoserver geoserver initdb --config=/etc/ckan/default/ckan.ini
+
+instalar ckanext-pages?? criação de paginas no ckan
