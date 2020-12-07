@@ -1,10 +1,11 @@
 # docker-compose build && docker-compose up -d
 # If "docker-compose logs ckan" shows DB not ready, run "docker-compose restart ckan" a few times.
 version: "3"
-networks:
-  ckan-network:
-    driver: "bridge"
 
+
+networks:
+  ckan_network:
+    driver: bridge
 
 volumes:
   ckan_config:
@@ -21,6 +22,8 @@ services:
       dockerfile: Dockerfile
       args:
         - CKAN_SITE_URL=${CKAN_SITE_URL}
+    networks:
+      - ckan_network
     links:
       - "db:db"
       - "solr:solr"
@@ -28,8 +31,6 @@ services:
       - "datapusher:datapusher"
     depends_on:
       - db
-    networks:
-      - ckan-network
     ports:
       - "0.0.0.0:${CKAN_PORT}:5000"
     environment:
@@ -64,7 +65,7 @@ services:
     container_name: datapusher
     image: clementmouchet/datapusher
     networks:
-      - ckan-network
+      - ckan_network
     ports:
       - "8800:8800"
 
@@ -84,7 +85,7 @@ services:
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "ckan"]
     networks:
-      - ckan-network
+      - ckan_network
 
   solr:
     container_name: solr
@@ -94,14 +95,14 @@ services:
     volumes:
       - solr_data:/opt/solr/server/solr/ckan/data
     networks:
-      - ckan-network
+      - ckan_network
 
 
   redis:
     container_name: redis
     image: redis:latest
     networks:
-      - ckan-network
+      - ckan_network
 
 #  geoserver:
 #    container_name: geoserver
