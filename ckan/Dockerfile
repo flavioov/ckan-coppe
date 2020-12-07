@@ -109,32 +109,31 @@ ENTRYPOINT ["/ckan-entrypoint.sh"]
 
 USER ckan
 
-# geoserver metadata spatial datastore usginmodels
+# geoserver metadata spatial datastore usginmodels harvest
 RUN . $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/ \
     && pip install -U setuptools lxml pillow ndg-httpsclient usginmodels shapely \
     && git clone https://github.com/ngds/ckanext-metadata.git \
     && git clone https://github.com/ngds/ckanext-spatial.git \
     && git clone https://github.com/ngds/ckanext-geoserver.git \
     && git clone https://github.com/flavioov/ckanext-datastore.git \
+    && git clone https://github.com/ngds/ckanext-harvest.git \
     && pip install -e git+https://github.com/REI-Systems/usginmodels.git@build#egg=usginmodels \
     && python ./usginmodels/setup.py build && python ./usginmodels/setup.py install \
     && pip install -e ckanext-metadata \
+    && pip install -e ckanext-harvest \
     && pip install -e ckanext-spatial \
     && pip install -e ckanext-geoserver \
     && pip install -e ckanext-datastore \
+    #geoserver
     && pip install gdal==$GDAL_VERSION gsconfig \
+    #harvest
+    && pip install SQLAlchemy==0.8.7 GeoAlchemy2 \
     && pip install -r ./ckanext-spatial/pip-requirements.txt && pip install -U requests \
     && cd ckanext-metadata && python setup.py install && python setup.py build  && cd .. \
+    && cd ckanext-harvest && python setup.py install && python setup.py build  && cd .. \
     && cd ckanext-spatial && python setup.py install && python setup.py build  && cd .. \
     && cd ckanext-geoserver && python setup.py install && python setup.py build  && cd .. \
     && cd ckanext-datastore && python setup.py install && python setup.py build
-
-
-# Geoserver and Datastore extension
-# não instalar (deveria) mas, pelo menos, já baixa os pacotes
-#RUN ckan-pip install -U setuptools ndg-httpsclient && \
-#    ckan-pip install pillow gsconfig gdal==$GDAL_VERSION owslib==0.8.2
-
 
 EXPOSE 5000
 CMD ["ckan-paster","serve","/etc/ckan/default/ckan.ini"]
