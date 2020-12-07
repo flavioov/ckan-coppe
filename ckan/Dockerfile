@@ -25,6 +25,7 @@ RUN apt-get -q -y update && apt-get -q -y upgrade \
       libpq-dev \
       libssl-dev \
       libgeos-dev \
+      libxml2-dev \
       git-core \
       wget \
 #      build-dep \ #erro ...
@@ -34,9 +35,7 @@ RUN apt-get -q -y update && apt-get -q -y upgrade \
       && apt-get -q clean
 
 
-
-
-# GDAL
+# GDAL - demorado... ~20-30min
 RUN wget https://download.osgeo.org/gdal/$GDAL_VERSION/gdal-$GDAL_VERSION.tar.gz \
         && tar -xvzf gdal-$GDAL_VERSION.tar.gz \
         && cd gdal-$GDAL_VERSION \
@@ -91,7 +90,7 @@ RUN ckan-pip install -U pip && \
     ln -s $CKAN_VENV/src/ckan/ckan/config/who.ini $CKAN_CONFIG/who.ini && \
     cp -v $CKAN_VENV/src/ckan/contrib/docker/ckan-entrypoint.sh /ckan-entrypoint.sh && \
     chmod +x /ckan-entrypoint.sh && \
-    chown -R ckan:ckan $CKAN_USER_HOME $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH
+    chown -R ckan:ckan $CKAN_USER_HOME $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH /etc/ckan
 
 
 RUN mkdir /var/tmp/GeoserverUpload && \
@@ -100,12 +99,36 @@ RUN mkdir /var/tmp/GeoserverUpload && \
 
 ADD ./geoservice/* /var/tmp/GeoserverUpload/
 
+# ckna config export path
+RUN export CKAN_INI=/etc/ckan/default/ckan.ini
+
 # SetUp EntryPoint
 COPY ./contrib/docker/ckan-entrypoint.sh /
 RUN chmod +x /ckan-entrypoint.sh
 ENTRYPOINT ["/ckan-entrypoint.sh"]
 
 USER ckan
+
+# geoserver metadata spatial datastore usginmodels
+RUN . $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/ \
+    && pip install -U setuptools lxml pillow ndg-httpsclient usginmodels shapely \
+    && git clone https://github.com/ngds/ckanext-metadata.git \
+    && git clone https://github.com/ngds/ckanext-spatial.git \
+    && git clone https://github.com/ngds/ckanext-geoserver.git \
+    && git clone https://github.com/flavioov/ckanext-datastore.git \
+    && pip install -e git+https://github.com/REI-Systems/usginmodels.git@build#egg=usginmodels \
+    && python ./usginmodels/setup.py build && python ./usginmodels/setup.py install \
+    && pip install -e ckanext-metadata \
+    && pip install -e ckanext-spatial \
+    && pip install -e ckanext-geoserver \
+    && pip install -e ckanext-datastore \
+    && pip install gdal==$GDAL_VERSION gsconfig \
+    && pip install -r ./ckanext-spatial/pip-requirements.txt && pip install -U requests \
+    && cd ckanext-metadata && python setup.py install && python setup.py build  && cd .. \
+    && cd ckanext-spatial && python setup.py install && python setup.py build  && cd .. \
+    && cd ckanext-geoserver && python setup.py install && python setup.py build  && cd .. \
+    && cd ckanext-datastore && python setup.py install && python setup.py build
+
 
 # Geoserver and Datastore extension
 # não instalar (deveria) mas, pelo menos, já baixa os pacotes
