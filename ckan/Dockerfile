@@ -36,16 +36,16 @@ RUN apt-get -q -y update && apt-get -q -y upgrade \
 
 
 # GDAL
-#RUN wget https://download.osgeo.org/gdal/$GDAL_VERSION/gdal-$GDAL_VERSION.tar.gz \
-#        && tar -xvzf gdal-$GDAL_VERSION.tar.gz \
-#        && cd gdal-$GDAL_VERSION \
-#        && ./configure --prefix=/usr \
-#        && make \
-#        && checkinstall \
-#        && rm -rf gdal-$GDAL_VERSION
-#
-#RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
-#RUN export C_INCLUDE_PATH=/usr/include/gdal
+RUN wget https://download.osgeo.org/gdal/$GDAL_VERSION/gdal-$GDAL_VERSION.tar.gz \
+        && tar -xvzf gdal-$GDAL_VERSION.tar.gz \
+        && cd gdal-$GDAL_VERSION \
+        && ./configure --prefix=/usr \
+        && make \
+        && checkinstall \
+        && rm -rf gdal-$GDAL_VERSION
+
+RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
+RUN export C_INCLUDE_PATH=/usr/include/gdal
 
 
 
