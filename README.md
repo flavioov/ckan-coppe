@@ -317,6 +317,8 @@ pip install -U ndg-httpsclient
 pip install usginmodels
 pip install shapely
 git clone https://github.com/ngds/ckanext-metadata
+git clone https://github.com/ngds/ckanext-spatial.git
+apt-get install libgeos-dev libgeos-c1v5 libgeos-3.7.1
 
 [inicializa geoserver?](https://confluence.csiro.au/display/seegrid/CKAN+Spatial+Extensions+Setup+Guide)
 paster --plugin=ckanext-geoserver geoserver initdb --config=/etc/ckan/default/ckan.ini

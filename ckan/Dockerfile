@@ -24,6 +24,7 @@ RUN apt-get -q -y update && apt-get -q -y upgrade \
       libffi-dev \
       libpq-dev \
       libssl-dev \
+      libgeos-dev \
       git-core \
       wget \
 #      build-dep \ #erro ...
