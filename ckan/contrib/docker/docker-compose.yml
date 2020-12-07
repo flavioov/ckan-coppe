@@ -2,7 +2,7 @@
 # If "docker-compose logs ckan" shows DB not ready, run "docker-compose restart ckan" a few times.
 version: "3"
 networks:
-  ckan-network: "ckan-network"
+  ckan-network:
     driver: "bridge"
 
 
