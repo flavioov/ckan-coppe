@@ -126,7 +126,7 @@ Traceback (most recent call last):
 BackendUnavailable
 
 ```
-[Solução](https://github.com/ckan/ckan/issues/5618): pip install -U pipenv
+[Solução](https://github.com/ckan/ckan/issues/5618): pip install -U pipenv setuptools
 
 #### Gdal
 resumo:
