@@ -80,7 +80,7 @@ RUN mkdir -p $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH && \
     ln -s $CKAN_VENV/bin/ckan /usr/local/bin/ckan
 
 # Setup CKAN
-ADD .. $CKAN_VENV/src/ckan/
+ADD . $CKAN_VENV/src/ckan/
 RUN ckan-pip install -U pip && \
     ckan-pip install --upgrade --no-cache-dir -r $CKAN_VENV/src/ckan/requirement-setuptools.txt && \
     ckan-pip install --upgrade --no-cache-dir -r $CKAN_VENV/src/ckan/requirements-py2.txt && \
@@ -103,7 +103,7 @@ RUN . $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/ \
     && pip install -r ckanext-spatial/pip-requirements.txt \
     && pip install -e ckanext-geoview \
     && pip install -r ckanext-geoview/pip-requirements.txt
-#    && pip install geos \
+    && pip install geos \
 #    && pip install SQLAlchemy==0.8.7 GeoAlchemy2 \
 #    && cd ckanext-spatial && python setup.py install && python setup.py build  && cd .. \
 

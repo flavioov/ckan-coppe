@@ -38,3 +38,27 @@ use - visualização ou download de data
 [update your sources using this](https://lists-archive.okfn.org/pipermail/ckan-dev/2016-July/021467.html):
 ckan --config=/etc/ckan/production.ini views create geojson_view
 
+##  Jenkins + Registry + Rancher
+
+#### Docker Registry
+instalação:
+```textmate
+docker run -d -p 5000:5000 --name registry registry:2
+```
+
+Tag da imagem
+```textmate
+docker image tag ubuntu localhost:5000/myfirstimage
+```
+
+push da imagem para o dkcer registry
+```textmate
+docker push localhost:5000/myfirstimage
+```
+
+pull da imagem do docker registry
+```textmate
+docker pull localhost:5000/myfirstimage
+```
+
+
