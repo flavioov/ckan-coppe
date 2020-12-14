@@ -54,16 +54,16 @@ RUN apt-get -q -y update \
     && apt-get -q clean
 
 # GDAL - demorado... ~20-30min
-RUN wget http://download.osgeo.org/geos/geos-3.8.1.tar.bz2 \
-        && tar -xf geos-3.8.1.tar.bz2 \
-        && cd geos-3.8.1 \
-        && ./configure --prefix=/usr \
-        && make \
-        && checkinstall && cd ..\
-        && rm -rf geos-3.8.1 && rm -rf geos-3.8.1.tar.bz2
+#RUN wget http://download.osgeo.org/geos/geos-3.8.1.tar.bz2 \
+#        && tar -xf geos-3.8.1.tar.bz2 \
+#        && cd geos-3.8.1 \
+#        && ./configure --prefix=/usr \
+#        && make \
+#        && checkinstall && cd ..\
+#        && rm -rf geos-3.8.1 && rm -rf geos-3.8.1.tar.bz2
 
-RUN export CPLUS_INCLUDE_PATH=/usr/include/geos
-RUN export C_INCLUDE_PATH=/usr/include/geos
+#RUN export CPLUS_INCLUDE_PATH=/usr/include/geos
+#RUN export C_INCLUDE_PATH=/usr/include/geos
 
 
 # for not having to use the full command ckan -config=/etc/ckan/ckan.ini <command>
@@ -103,12 +103,9 @@ RUN . $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/ \
     && pip install -r ckanext-spatial/pip-requirements.txt \
     && pip install -e ckanext-geoview \
     && pip install -r ckanext-geoview/pip-requirements.txt
-#    && pip install -e ckanext-geoserver \
-#    #geoserver
-#    && pip install gdal==$GDAL_VERSION gsconfig \
+#    && pip install geos \
 #    && pip install SQLAlchemy==0.8.7 GeoAlchemy2 \
 #    && cd ckanext-spatial && python setup.py install && python setup.py build  && cd .. \
-
 
 
 EXPOSE 5000

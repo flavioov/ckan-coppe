@@ -1,5 +1,9 @@
-
 # ckan v2.9.0
+
+1) apenas executar 'docker-compose up -d --build'
+2) adicionar ao production.ini as configurações dos plugins em ./ckan-2.9/production.conf 
+
+
 
 ### cli
 ckan --config=/etc/ckan/production.ini <command>
