@@ -1,0 +1,17 @@
+// 20201214110338
+// https://demo.ckan.org/dataset/84a15885-4471-4ff0-8161-04f773bd9e83/resource/714288d5-578b-4b99-93f2-4c9650459de3/download/b.json
+
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      128.964106,
+      35.599521
+    ],
+    "level": "8"
+  },
+  "properties": {
+    "광산명": "밀양광산"
+  }
+}
