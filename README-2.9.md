@@ -1,19 +1,16 @@
 # ckan v2.9.0
-
-1) apenas executar 'docker-compose up -d --build'
-2) adicionar ao production.ini as configurações dos plugins em ./ckan-2.9/production.conf 
-
-
+Geoview - wms: funcionado!
+Geoview - geojson: ????
 
 ### cli
 ckan --config=/etc/ckan/production.ini <command>
+
 ### update ckan python packages
 git fetch
 git checkout ckan-2.9.1
 pip install --upgrade -r requirements.txt
 pip install --upgrade -r requirements-py2.txt
 python setup.py develop
-
 
 ### goeview
 
@@ -28,23 +25,16 @@ publish - datação e documentação por upload direto
 discover - data com ferramenta de alta capacidade de busca
 use - visualização ou download de data
 
+#### geoview - wms
+1) apenas executar 'docker-compose up -d --build'
+2) adicionar ao production.ini as configurações dos plugins em ./ckan-2.9/production.conf
+3) para carregar o mapa com o geoview (formato wms)
+   3.1) crair um dataset
+   3.2) adicionar o arquivo /geostuff/openlayers
+   3.3) formato do arquivo: wms
 
+#### geoview - geojson
 
 [update your sources using this](https://lists-archive.okfn.org/pipermail/ckan-dev/2016-July/021467.html):
 ckan --config=/etc/ckan/production.ini views create geojson_view
-
-#adicionar "storage.py" (copiado do ckan v2.6.9) em ckan/controller/storage.py
-#adicionar "db.py" (copiado do ckan v2.6.9) em ckanext/datastore/db.py
-
-
-erro ao logar com usuario do ckan:
-```text
- File "/usr/lib/ckan/venv/src/ckan/ckan/lib/helpers.py", line 1594, in get_display_timezone
-    return tzlocal.get_localzone()
-  File "/usr/lib/ckan/venv/local/lib/python2.7/site-packages/tzlocal/unix.py", line 123, in get_localzone
-    _cache_tz = _get_localzone()
-  File "/usr/lib/ckan/venv/local/lib/python2.7/site-packages/tzlocal/unix.py", line 117, in _get_localzone
-    raise pytz.UnknownTimeZoneError('Can not find any timezone configuration')
-UnknownTimeZoneError: 'Can not find any timezone configuration'
-```
 
