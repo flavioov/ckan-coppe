@@ -102,8 +102,8 @@ RUN . $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/ \
     && pip install -e ckanext-spatial \
     && pip install -r ckanext-spatial/pip-requirements.txt \
     && pip install -e ckanext-geoview \
-    && pip install -r ckanext-geoview/pip-requirements.txt
-    && pip install geos \
+    && pip install -r ckanext-geoview/pip-requirements.txt \
+    && pip install geos
 #    && pip install SQLAlchemy==0.8.7 GeoAlchemy2 \
 #    && cd ckanext-spatial && python setup.py install && python setup.py build  && cd .. \
 
